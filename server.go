@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+    "log"
     "fmt"
     "bufio"
     "net/http"
@@ -32,6 +32,8 @@ func main() {
     mux.HandleFunc("/prev/", rw2.Prev)
     log.Fatal(http.ListenAndServe(":8080", RequestLogger(mux)))
 }
+
+/* API */
 
 // Return the current fibonacci num from data.log
 func Current(w http.ResponseWriter, r *http.Request) {
@@ -96,6 +98,8 @@ func (rw2 *ReadWriteMutex) Prev(w http.ResponseWriter, r *http.Request) {
     }
 }
 
+/* Response object */
+
 // Construct response from input data, the expected response format looks like
 // {
 //     "code":"00000", 
@@ -133,6 +137,8 @@ func FormatJson(w http.ResponseWriter, data string, statusCode int, code string,
     jsonMap["data"] = data
     json.NewEncoder(w).Encode(jsonMap)
 }
+
+/* Read and Write file */
 
 // Read the first and second line from "name"
 // then convert them to big.int
@@ -189,6 +195,8 @@ func UpdatePrevAndCurrent(name string, current *big.Int, next *big.Int) (error) 
     }
     return nil
 }
+
+/* helper function */
 
 // Logging for debug 
 func RequestLogger(targetMux http.Handler) http.Handler {
