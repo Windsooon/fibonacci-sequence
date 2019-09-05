@@ -16,11 +16,33 @@ implement fibonacci sequence API using Go
     current -> 2
     previous -> 1
 
-## Default data.log
+## Default
+data.log
 
     0
     1
     (empty line at last)
+
+## Expected response
+
+We use a hashtable for "code" and "msg" to tell frontend what's going on
+
+    codeToMessage := map[string]string{
+            "00000": "Succeed",
+            "10000": "There is no previous value for 0",
+            "10001": "data.log not found",
+            "10002": "Can't read the first line from data.log",
+            "10003": "Can't read the second line from data.log",
+            "10004": "Can't update data.log",
+        }
+
+The expected response looks like this. The "data" is the fibonacci value we need
+
+    {
+        "code":"00000",
+        "data":"1",
+        "msg":"Succeed"
+    }
 
 ## Structure
 
