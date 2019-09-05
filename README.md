@@ -16,6 +16,12 @@ implement fibonacci sequence API using Go
     current -> 2
     previous -> 1
 
+## Default data.log
+
+    0
+    1
+    (empty line at last)
+
 ## Structure
 
 ![structure](https://raw.githubusercontent.com/Windsooon/fibonacci-sequence/master/structure.png)
